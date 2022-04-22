@@ -9,7 +9,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Login {
+public class Login implements PanelDesigner {
     private static Login instance;
 
     private JPanel loginPane;
@@ -46,7 +46,10 @@ public class Login {
 
                 LoginResult result = Command.getInstance().canLogin(date);
                 if (result == LoginResult.PASS) {
+                    JOptionPane.showMessageDialog(loginButton,
+                            "welcome "+Command.getInstance().getNameOfUser());
 
+                    Command.getInstance().showUserPage();
                 } else {
                     JOptionPane.showMessageDialog(loginButton, result.getMassage());
                 }
@@ -54,7 +57,6 @@ public class Login {
         });
     }
 
-    public JPanel getLoginPane() {
-        return loginPane;
-    }
+    @Override
+    public JPanel getPanel() { return loginPane; }
 }

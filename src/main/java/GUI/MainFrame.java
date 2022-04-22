@@ -1,8 +1,5 @@
 package GUI;
 
-import DATE_BASE.Faculties;
-import MODELS.Classroom;
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -40,12 +37,16 @@ public class MainFrame extends JFrame {
 */
         setLayout(null);
         //getContentPane().add(list, BorderLayout.CENTER);
-        setContentPane(new StudentPage().getPanel1()); //Login.getInstance().getLoginPane());  //new MainPage().getPane()););
+        setContentPane(Login.getInstance().getPanel()); //Login.getInstance().getLoginPane());  //new MainPage().getPane()););
         repaint();
         //setJMenuBar((new StudentMenus()).mb);//(new MainPage()).panel1);//RealTime.getPanel());//Login.getInstance().getLoginPane());
 
         revalidate();
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
+    }
+    public void uploadPage() {
+        setContentPane(new MainPage().getPane());
+        repaint();
     }
 }

@@ -1,6 +1,7 @@
 package DATE_BASE;
 
 import MODELS.Professor;
+import MODELS.Student;
 import MODELS.User;
 
 import java.util.ArrayList;
@@ -19,6 +20,7 @@ public class Users {
 
         users.add(new User(400108044, "1234"));
         users.add(new Professor(100, "1234"));
+        users.add(new Student(1234, "some typing"));
     }
 
     public static Users getInstance() {

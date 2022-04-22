@@ -22,4 +22,6 @@ public class User {
 
     public long getId() { return id; }
     public int getHashOfPassword() { return hashOfPassword; }
+
+    public String getName() { return name; }
 }
