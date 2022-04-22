@@ -25,7 +25,7 @@ public class MainFrame extends JFrame {
 
         //JPanel p =  new JPanel();
      //   p.add(new List());
-        List list = new List();
+       /* List list = new List();
         Classroom classroom = Faculties.getInstance().getFaculty().getClassrooms().get(0);
         System.out.println(classroom == null);
         list.addRow(classroom.getCourse().getId(),
@@ -37,10 +37,10 @@ public class MainFrame extends JFrame {
                 classroom.getRegistrationNumber(),
                 classroom.getProfessorName(),
                 classroom.getExamDate() );
-
+*/
         setLayout(null);
-        getContentPane().add(list, BorderLayout.CENTER);
-      //  setContentPane(Login.getInstance().getLoginPane()); //new StudentPage().getPanel1()); //new MainPage().getPane()););
+        //getContentPane().add(list, BorderLayout.CENTER);
+        setContentPane(new StudentPage().getPanel1()); //Login.getInstance().getLoginPane());  //new MainPage().getPane()););
         repaint();
         //setJMenuBar((new StudentMenus()).mb);//(new MainPage()).panel1);//RealTime.getPanel());//Login.getInstance().getLoginPane());
 

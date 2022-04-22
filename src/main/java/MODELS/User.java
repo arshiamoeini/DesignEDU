@@ -7,7 +7,10 @@ public class User {
     int hashOfPassword;
 
     String name;
+    long nationalCode;
+    long phoneNumber;
     String email;
+    Faculty faculty;
     Image image;
 
     public User(long id, String password) {
