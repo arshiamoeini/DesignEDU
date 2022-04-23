@@ -25,19 +25,11 @@ public class MainFrame extends JFrame {
        /* List list = new List();
         Classroom classroom = Faculties.getInstance().getFaculty().getClassrooms().get(0);
         System.out.println(classroom == null);
-        list.addRow(classroom.getCourse().getId(),
-                classroom.getCourse().getCredit(),
-                classroom.getCourse().getName(),
-                classroom.getCourse().getPrerequisite(),
-                classroom.getCourse().getCoRequisite(),
-                classroom.getCapacity(),
-                classroom.getRegistrationNumber(),
-                classroom.getProfessorName(),
-                classroom.getExamDate() );
 */
         setLayout(null);
         //getContentPane().add(list, BorderLayout.CENTER);
-        setContentPane(Login.getInstance().getPanel()); //Login.getInstance().getLoginPane());  //new MainPage().getPane()););
+        ListDesigner listDesigner = new ListDesigner();
+        setContentPane(listDesigner.getPanel());//Login.getInstance().getPanel()); //Login.getInstance().getLoginPane());  //new MainPage().getPane()););
         repaint();
         //setJMenuBar((new StudentMenus()).mb);//(new MainPage()).panel1);//RealTime.getPanel());//Login.getInstance().getLoginPane());
 

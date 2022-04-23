@@ -1,8 +1,12 @@
 package MODELS;
 
+import DATE_BASE.Faculties;
+import DATE_BASE.Users;
+
 import java.util.ArrayList;
 
 public class Faculty {
+    private FacultyTag facultyTag;
     private Professor campusChairmen;
     private EducationalAssistant educationalAssistant;
 
@@ -12,9 +16,10 @@ public class Faculty {
     private ArrayList<Course> courses;
     private ArrayList<Classroom> classrooms;
 
-    public Faculty(Professor campusChairmen) {
-        this.campusChairmen = campusChairmen;
+    public Faculty(FacultyTag facultyTag) {
+        this.facultyTag = facultyTag;
 
+        campusChairmen = new Professor(100, "1234", this);
         courses = new ArrayList<>();
         classrooms = new ArrayList<>();
         professors = new ArrayList<>();
@@ -28,4 +33,7 @@ public class Faculty {
 
     public ArrayList<Course> getCourses() { return courses; }
     public ArrayList<Classroom> getClassrooms() { return classrooms; }
+
+    public FacultyTag getFacultyTag() { return facultyTag; }
+    public Professor getCampusChairmen() { return campusChairmen; }
 }

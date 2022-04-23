@@ -1,9 +1,6 @@
 package DATE_BASE;
 
-import MODELS.Classroom;
-import MODELS.Course;
-import MODELS.Faculty;
-import MODELS.Professor;
+import MODELS.*;
 
 import java.util.ArrayList;
 
@@ -14,11 +11,11 @@ public class Faculties {
         instance = new Faculties();
     }
 
-    ArrayList<Faculty> faculties;
+    private ArrayList<Faculty> faculties;
 
     public Faculties() {
         faculties = new ArrayList<>();
-        Faculty faculty = new Faculty((Professor) Users.getInstance().getUser(100));
+        Faculty faculty = new Faculty(FacultyTag.MATH);
         faculty.addCourses(new Course("riazi 1", 2004, new ArrayList<Course>(), new ArrayList<>()));
         ArrayList<Course> pre = new ArrayList<>();
         pre.add(faculty.getCourses().get(0));
@@ -32,7 +29,10 @@ public class Faculties {
         return instance;
     }
 
-    public Faculty getFaculty() {
-        return faculties.get(0);
+    public Faculty getFaculty(int index) {
+        return faculties.get(index);
+    }
+    protected ArrayList<Faculty> getFaculties() {
+        return faculties;
     }
 }

@@ -24,4 +24,19 @@ public class CellPane extends JPanel {
         textLabel.setEditable(editable);
         return textLabel;
     }
+    public void setEditable() {
+        if (label instanceof JTextArea) {
+            ((JTextArea) label).setEditable(true);
+        }
+    }
+    public String getText() {
+        if (label instanceof JTextArea) {
+            return ((JTextArea) label).getText();
+        }
+        return null;
+    }
+
+    public Component getLabel() {
+        return label;
+    }
 }

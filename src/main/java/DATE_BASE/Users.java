@@ -1,5 +1,6 @@
 package DATE_BASE;
 
+import MODELS.Faculty;
 import MODELS.Professor;
 import MODELS.Student;
 import MODELS.User;
@@ -18,9 +19,11 @@ public class Users {
     public Users() {
         users = new ArrayList<>();
 
-        users.add(new User(400108044, "1234"));
-        users.add(new Professor(100, "1234"));
-        users.add(new Student(1234, "some typing"));
+   //     for (Faculty faculty: Faculties.getInstance().getFaculties()) {
+    //        users.add(faculty.getCampusChairmen());
+    //    }
+        users.add(new User(400108044, "1234", Faculties.getInstance().getFaculty(0)));
+        users.add(new Student(1234, "some typing", Faculties.getInstance().getFaculty(0)));
     }
 
     public static Users getInstance() {
@@ -34,5 +37,8 @@ public class Users {
             }
         }
         return null;
+    }
+    public void addUser(User user) {
+        users.add(user);
     }
 }

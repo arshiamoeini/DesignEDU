@@ -13,7 +13,8 @@ public class User {
     Faculty faculty;
     Image image;
 
-    public User(long id, String password) {
+    public User(long id, String password, Faculty faculty) {
+        this.faculty = faculty;
         this.id = id;
         setPassword(password);
     }
@@ -24,4 +25,5 @@ public class User {
     public int getHashOfPassword() { return hashOfPassword; }
 
     public String getName() { return name; }
+    public Faculty getFaculty() { return faculty; }
 }

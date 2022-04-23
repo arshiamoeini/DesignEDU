@@ -18,7 +18,7 @@ public class Professor extends User {
     private MasterLevel level;
     private ArrayList<Classroom> weeklyClasses;
     private long roomNumber;
-    public Professor(long id, String password) {
-        super(id, password);
+    public Professor(long id, String password, Faculty faculty) {
+        super(id, password, faculty);
     }
 }

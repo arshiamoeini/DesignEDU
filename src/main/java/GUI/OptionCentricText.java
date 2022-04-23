@@ -1,5 +1,6 @@
 package GUI;
 
+import MODELS.Course;
 import MODELS.FacultyTag;
 import MODELS.Professor;
 
@@ -10,6 +11,7 @@ public class OptionCentricText extends JComboBox {
     public enum OptionsFrom {
         Faculties,
         MasterLevel,
+        Program,
     }
 
     public OptionCentricText(Object[] items) {
@@ -28,6 +30,9 @@ public class OptionCentricText extends JComboBox {
             case MasterLevel:
                 return (Arrays.stream(Professor.MasterLevel.values()).
                         map(Professor.MasterLevel::getMassage).toArray());
+            case Program:
+                return (Arrays.stream(Course.Program.values()).
+                        map(Course.Program::getMassage).toArray());
         }
         return new Object[0];
     }

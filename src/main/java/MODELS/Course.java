@@ -5,6 +5,19 @@ import java.util.stream.Collectors;
 
 public class Course {
     private Faculty faculty;
+    public enum Program implements ContainMessage {
+        UNDERGRADUATE("undergraduate"),
+        MASTER_DEGREE("mater degree"),
+        COMMON("common"),
+        PHD("PHD");
+        private String name;
+        Program(String name) {
+            this.name = name;
+        }
+        @Override
+        public String getMassage() { return name; }
+    }
+    Program program;
     private String name;
     private int id;
     private int credit;
@@ -22,6 +35,7 @@ public class Course {
         this.faculty = faculty;
     }
 
+    public Program getProgram() { return program; }
     public int getId() {
         return id;
     }
