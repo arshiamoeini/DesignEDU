@@ -1,8 +1,8 @@
 package GUI;
 
 import MODELS.Course;
-import MODELS.FacultyTag;
 import MODELS.Professor;
+import MODELS.University;
 
 import javax.swing.*;
 import java.util.Arrays;
@@ -25,8 +25,7 @@ public class OptionCentricText extends JComboBox {
     public static Object[] getOptionsName(OptionsFrom optionsFrom) {
         switch (optionsFrom) {
             case Faculties:
-                return (Arrays.stream(FacultyTag.values()).
-                        map(FacultyTag::getMassage).toArray());
+                return University.getInstance().getFacultiesName();
             case MasterLevel:
                 return (Arrays.stream(Professor.MasterLevel.values()).
                         map(Professor.MasterLevel::getMassage).toArray());

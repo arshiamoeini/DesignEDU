@@ -1,10 +1,13 @@
 package MODELS;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class Course {
-    private Faculty faculty;
+    private int facultyID;
+
     public enum Program implements ContainMessage {
         UNDERGRADUATE("undergraduate"),
         MASTER_DEGREE("mater degree"),
@@ -27,12 +30,28 @@ public class Course {
     public Course(String name, int id, ArrayList<Course> prerequisite, ArrayList<Course> coRequisite) {
         this.name = name;
         this.id = id;
+        this.facultyID = facultyID;
         this.prerequisite = prerequisite;
         this.coRequisite = coRequisite;
     }
 
-    public void setFaculty(Faculty faculty) {
-        this.faculty = faculty;
+    protected void setFacultyID(int facultyID) {
+        this.facultyID = facultyID;
+    }
+
+
+    public void edit(String courseName, int courseCredit, ArrayList<Integer> prerequisite, ArrayList<Integer> coRequisite) {
+        Faculty faculty = getFaculty();
+        this.name = courseName;
+        this.credit = courseCredit;
+        this.prerequisite = new ArrayList<>(prerequisite.stream().map(x -> faculty.getCourse(x))
+                .collect(Collectors.toList()));
+        this.coRequisite = new ArrayList<>(coRequisite.stream().map(x -> faculty.getCourse(x))
+                .collect(Collectors.toList()));
+    }
+
+    private Faculty getFaculty() {
+        return University.getInstance().getFaculty(facultyID);
     }
 
     public Program getProgram() { return program; }

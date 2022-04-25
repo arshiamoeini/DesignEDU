@@ -1,12 +1,10 @@
 package LOGIC;
 
-import DATE_BASE.Faculties;
-import DATE_BASE.Users;
-import GUI.DemoList;
-import GUI.EditableSubjectsList;
-import GUI.MainFrame;
-import GUI.SubjectsList;
+import GUI.*;
 import MODELS.*;
+
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 public class Command {
     private static Command instance;
@@ -15,7 +13,7 @@ public class Command {
         instance = new Command();
     }
 
-    private User user = new EducationalAssistant(1234, "daf", Faculties.getInstance().getFaculty(0));
+    private User user = University.getInstance().getUser(111);
     private MainFrame mainFrame;
 
     public static Command getInstance() { return instance; }
@@ -26,7 +24,7 @@ public class Command {
     public LoginResult canLogin(LoginDate date) {
         if (!date.isValidUserID()) { return LoginResult.WRONG_USER_ID; }
 
-        user = Users.getInstance().getUser(date.getUserID());
+        user = University.getInstance().getUser(date.getUserID());
         if (user == null) { return LoginResult.WRONG_USER_ID; }
 
         if (user.getHashOfPassword() == date.getHashOfPassword()) {
@@ -40,33 +38,9 @@ public class Command {
         //some second wait
         mainFrame.uploadPage();
     }
-    public DemoList doSubjectFilter(int facultyIndex, int programIndex, boolean sortByExamDate) {
-        DemoList demoList = (canUserEditSubjectsList(facultyIndex) ? new SubjectsList() :
-                                                                    new EditableSubjectsList());
-        Faculty faculty =  Faculties.getInstance().getFaculty(facultyIndex);
-        for (Classroom classroom: faculty.getClassrooms()) {
-            demoList.addSubjectRow(
-                    classroom.getCourse().getId(),
-                    classroom.getCourse().getCredit(),
-                    classroom.getCourse().getName(),
-                    classroom.getCourse().getPrerequisite(),
-                    classroom.getCourse().getCoRequisite(),
-                    classroom.getCapacity(),
-                    classroom.getRegistrationNumber(),
-                    classroom.getProfessorName(),
-                    classroom.getExamDate());
-        }
-        return demoList;
-            //if (classroom.getCourse().getProgram() == Course.Program.values()[programIndex]) {
 
-            //}
-    }
-    private boolean canUserEditSubjectsList(int facultyIndex) {
-        return  (user instanceof EducationalAssistant &&
-            user.getFaculty().getFacultyTag() == FacultyTag.values()[facultyIndex]);
-    }
-    public void setSubjectEdit(String name) {
-        System.out.println(name);
+    protected boolean canUserEditSubjectsList(Faculty faculty) {
+        return  (user instanceof EducationalAssistant && user.isIn(faculty));
     }
     public String getNameOfUser() {
         return user.getName();
@@ -74,5 +48,10 @@ public class Command {
 
     public boolean isTheUserAProfessor() {
         return user instanceof Professor;
+    }
+
+    protected User getUser() { return user; }
+    protected EducationalAssistant getEducationalAssistant() {
+        return (EducationalAssistant) user;
     }
 }

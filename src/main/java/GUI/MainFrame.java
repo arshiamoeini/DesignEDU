@@ -28,8 +28,7 @@ public class MainFrame extends JFrame {
 */
         setLayout(null);
         //getContentPane().add(list, BorderLayout.CENTER);
-        ListDesigner listDesigner = new ListDesigner();
-        setContentPane(listDesigner.getPanel());//Login.getInstance().getPanel()); //Login.getInstance().getLoginPane());  //new MainPage().getPane()););
+        setContentPane(ListDesigner.getInstance().getPanel());//Login.getInstance().getPanel()); //Login.getInstance().getLoginPane());  //new MainPage().getPane()););
         repaint();
         //setJMenuBar((new StudentMenus()).mb);//(new MainPage()).panel1);//RealTime.getPanel());//Login.getInstance().getLoginPane());
 

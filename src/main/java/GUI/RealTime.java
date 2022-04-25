@@ -6,6 +6,8 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.DateFormat;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
@@ -47,6 +49,9 @@ public class RealTime {
 
     private static DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
     public static String dateAndTime(LocalDateTime dateTime) {
+        //TODO add this
+        LocalDate.now().getDayOfWeek();
+        System.out.println(LocalDateTime.from(myFormatObj.parse("2022-04-25 11:34:57")));
         return dateTime.format(myFormatObj);
     }
 }

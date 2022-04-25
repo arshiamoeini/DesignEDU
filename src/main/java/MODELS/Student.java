@@ -26,7 +26,14 @@ public class Student extends User {
     private LocalDateTime registrationTime;
 
     private ArrayList<Classroom> weeklyClasses;
-    public Student(long id, String password, Faculty faculty) {
-        super(id, password, faculty);
+    public Student(long id, String password) {
+        super(id, password);
+    }
+
+    public void setSupervisor(Professor supervisor) {
+        Supervisor = supervisor;
+    }
+    public Professor getSupervisor() {
+        return Supervisor;
     }
 }

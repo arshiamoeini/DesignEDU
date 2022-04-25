@@ -19,7 +19,7 @@ public class DemoList extends JScrollPane {
 
     public DemoList() {
         //setting
-        setSize(new Dimension(MainFrame.MAIN_WIDTH - 100, MainFrame.MAIN_HEIGHT - 100));
+        setSize(new Dimension(MainFrame.MAIN_WIDTH - 50, MainFrame.MAIN_HEIGHT - 50));
         setBackground(Color.RED);
         setOpaque(true);
 
@@ -37,7 +37,7 @@ public class DemoList extends JScrollPane {
     }
     protected void setComponentAtRow(Component label, int index){
         gbcFiller.gridx = index;
-        pane.add(label, label);
+        pane.add(label, gbcFiller);
     }
     protected void addCopyableTextInRow(String text) {
         gbcFiller.gridx = (columnCounter++);

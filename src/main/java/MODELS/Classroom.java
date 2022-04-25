@@ -6,21 +6,41 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Classroom {
-    private Course course;
-    private Professor teacher;
+    private int facultyID;
+    private int courseID;
+    private int teacherID;
     private int capacity;
-    private ArrayList<Student> students;
+    private ArrayList<LocalDateTime> time;
+
+    public class classRating {
+        private int studentID;
+        private double score;
+
+        public classRating(int studentID) {
+            this.studentID = studentID;
+        }
+    }
+    private ArrayList<classRating> students;
     private LocalDateTime examDate;
-    public Classroom(Course course, Professor teacher, int capacity) {
-        examDate = LocalDateTime.now();
-        this.course = course;
-        this.teacher = teacher;
+
+    public Classroom(int courseID, int teacherID, int capacity, LocalDateTime examDate) {
+        this.courseID = courseID;
+        this.teacherID = teacherID;
         this.capacity = capacity;
+        this.examDate = examDate;
 
         students = new ArrayList<>();
     }
 
-    public Course getCourse() { return course; }
+    public void edit(int capacity) {
+        this.capacity = Math.min(capacity, students.size());
+    }
+    public void setFacultyID(int facultyID) {
+        this.facultyID = facultyID;
+    }
+    public Faculty getFaculty() { return University.getInstance().getFaculty(facultyID); }
+
+    public Course getCourse() { return getFaculty().getCourse(courseID); }
 
     public int getCapacity() { return capacity; }
 
@@ -28,7 +48,7 @@ public class Classroom {
         return students.size();
     }
     public String getProfessorName() {
-        return teacher.name;
+        return getFaculty().getProfessor(teacherID).getName();
     }
     public LocalDateTime getExamDate() {
         return examDate;
