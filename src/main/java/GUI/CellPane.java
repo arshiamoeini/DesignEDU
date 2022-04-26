@@ -35,6 +35,11 @@ public class CellPane extends JPanel {
         }
         return null;
     }
+    public void setButton(JButton button) {
+        removeAll();
+        add(button);
+        label = button;
+    }
 
     public Component getLabel() {
         return label;

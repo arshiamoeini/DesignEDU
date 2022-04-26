@@ -23,11 +23,12 @@ public class Classroom {
     private ArrayList<classRating> students;
     private LocalDateTime examDate;
 
-    public Classroom(int courseID, int teacherID, int capacity, LocalDateTime examDate) {
+    public Classroom(int courseID, int teacherID, int capacity, LocalDateTime examDate, ArrayList<LocalDateTime> time) {
         this.courseID = courseID;
         this.teacherID = teacherID;
         this.capacity = capacity;
         this.examDate = examDate;
+        this.time = time;
 
         students = new ArrayList<>();
     }
@@ -52,5 +53,8 @@ public class Classroom {
     }
     public LocalDateTime getExamDate() {
         return examDate;
+    }
+    public ArrayList<LocalDateTime> getTime() {
+        return time;
     }
 }

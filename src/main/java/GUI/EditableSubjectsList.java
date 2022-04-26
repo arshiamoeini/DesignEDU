@@ -44,11 +44,14 @@ public class EditableSubjectsList extends EditableDemoList {
 
     @Override
     public void editActionHandler(int rowNumber) {
-        JButton button = getEditButton(rowNumber);
         for (int i = 1;i <= 8;++i) {
             getCellPane(rowNumber, i).setEditable();
         }
-        button.addActionListener(new ActionListener() {
+
+        CellPane button = getCellPane(rowNumber, 0);
+        JButton newButton = new JButton("Ok");
+        button.setButton(newButton);
+        newButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
@@ -64,6 +67,8 @@ public class EditableSubjectsList extends EditableDemoList {
                             Integer.valueOf(getCellPane(rowNumber, 6).getText()),
                             getCellPane(rowNumber, 7).getText());
                    //         readLocalDateTime(getCellPane(rowNumber, 1).getText()));
+                    //finish edit and add new edit button for try again
+                    button.setButton(new editButton(rowNumber));
                 } catch (Exception error) {
                     System.out.println(error);
                 }
@@ -101,8 +106,9 @@ public class EditableSubjectsList extends EditableDemoList {
     @Override
     protected void deleteActionHandler(int rowNumber) {
         //TODO
-        if (getEditButton(rowNumber).getActionListeners()[0] instanceof editButton) {
-            //not edit mod
+        if (getCellPane(rowNumber, 0).getLabel() instanceof editButton) {
+            //edit mod
+            return;
         }
     }
 }

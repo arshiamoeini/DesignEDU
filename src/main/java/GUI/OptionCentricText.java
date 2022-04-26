@@ -1,6 +1,7 @@
 package GUI;
 
 import MODELS.Course;
+import MODELS.Faculty;
 import MODELS.Professor;
 import MODELS.University;
 
@@ -12,6 +13,7 @@ public class OptionCentricText extends JComboBox {
         Faculties,
         MasterLevel,
         Program,
+        Professor
     }
 
     public OptionCentricText(Object[] items) {
@@ -20,6 +22,9 @@ public class OptionCentricText extends JComboBox {
 
     public OptionCentricText(OptionsFrom optionsFrom) {
         this(getOptionsName(optionsFrom));
+    }
+    public OptionCentricText(Faculty faculty) {
+        this(faculty.getProfessorsName());
     }
 
     public static Object[] getOptionsName(OptionsFrom optionsFrom) {

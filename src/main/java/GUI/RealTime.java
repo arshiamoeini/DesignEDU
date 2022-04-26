@@ -54,4 +54,8 @@ public class RealTime {
         System.out.println(LocalDateTime.from(myFormatObj.parse("2022-04-25 11:34:57")));
         return dateTime.format(myFormatObj);
     }
+    public static DateTimeFormatter myFormatObjWeek = DateTimeFormatter.ofPattern("EEE hh:mm a");
+    public static String weekDayAndTime(LocalDateTime time) {
+        return time.format(myFormatObjWeek);
+    }
 }

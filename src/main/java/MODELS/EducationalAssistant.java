@@ -23,4 +23,29 @@ public class EducationalAssistant extends Professor {
         //TODO have object of class in hear from (show demo) maybe filter obj in command to help command
         //getFaculty().getClassroom()
     }
+
+    public void acceptRequest(Faculty.EducationalRequest request) {
+        getFaculty().removeRequest(request);
+        //TODO Handel
+        if (request.getRequestType() == Faculty.RequestType.MAJOR) {
+            Student student = request.getStudent();
+            if (student instanceof BachelorStudent) {
+                ((BachelorStudent) student).acceptMajor(request.getMassage());
+            } else {
+                System.out.println("sdfaseeed");
+            }
+        }
+    }
+
+    public void rejectRequest(Faculty.EducationalRequest request) {
+        getFaculty().removeRequest(request);
+        if (request.getRequestType() == Faculty.RequestType.MAJOR) {
+            Student student = request.getStudent();
+            if (student instanceof BachelorStudent) {
+                ((BachelorStudent) student).rejectMajor(request.getMassage());
+            } else {
+                System.out.println("sdfasd");
+            }
+        }
+    }
 }

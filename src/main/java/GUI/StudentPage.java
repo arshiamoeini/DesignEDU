@@ -12,7 +12,8 @@ public class StudentPage extends MainPage implements PanelDesigner {
     public StudentPage() {
         main.addChangeListener(new SelectMenuHandler(panel));
 
-      //  panel.add("Card2", new List());
+        panel.add("Card2", new ListDesigner().getPanel());
+        panel.add("Card3", new EducationalServicesDesigner().getPanel());
     }
 
     @Override

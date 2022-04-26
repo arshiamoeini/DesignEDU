@@ -9,6 +9,9 @@ public class ProfessorPage implements PanelDesigner {
 
     public ProfessorPage() {
         main.addChangeListener(new SelectMenuHandler(panel));
+
+        panel.add("Card2", new ListDesigner().getPanel());
+        panel.add("Card3", new EducationalServicesDesigner().getPanel());
     }
 
     @Override

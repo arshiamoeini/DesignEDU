@@ -43,6 +43,12 @@ public class DemoList extends JScrollPane {
         gbcFiller.gridx = (columnCounter++);
         pane.add(new CellPane(text, false), gbcFiller);
     }
+    protected CellPane addCopyableTextInRowForEdit(String text) {
+        gbcFiller.gridx = (columnCounter++);
+        CellPane output = new CellPane(text, false);
+        pane.add(output, gbcFiller);
+        return output;
+    }
     protected static String joinArrayListWithEndLine(ArrayList<Integer> array) {
         return array.stream().map(Object::toString).collect(Collectors.joining("\n"));
     }

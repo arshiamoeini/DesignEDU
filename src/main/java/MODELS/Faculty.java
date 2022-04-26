@@ -15,6 +15,54 @@ public class Faculty implements ContainMessage {
     private int campusChairmenID;
     private int educationalAssistantID;
 
+    public void addEducationalRequest(RequestType type, String text, long studentSourceID) {
+        educationalRequests.add(new EducationalRequest(type, text, studentSourceID));
+    }
+    public void removeRequest(EducationalRequest request) {
+        educationalRequests.remove(request);
+    }
+
+    public ArrayList<EducationalRequest> getEducationalRequests() {
+        return educationalRequests;
+    }
+
+    public enum RequestType implements ContainMessage {
+        WITHDRAWAL("Withdrawal"),
+        MAJOR("Major");
+        private String message;
+
+        RequestType(String message) {
+            this.message = message;
+        }
+
+        @Override
+        public String getMassage() {
+            return message;
+        }
+    }
+    public class EducationalRequest implements ContainMessage {
+        private RequestType requestType;
+        private String message;
+        private long studentSourceID;
+
+        public EducationalRequest(RequestType requestType, String message, long studentSourceID) {
+            this.requestType = requestType;
+            this.message = message;
+            this.studentSourceID = studentSourceID;
+        }
+        public RequestType getRequestType() {
+            return requestType;
+        }
+        public Student getStudent() {
+            return (Student) University.getInstance().getUser(studentSourceID);
+        }
+
+        @Override
+        public String getMassage() {
+            return message;
+        }
+    }
+    private ArrayList<EducationalRequest> educationalRequests;
     public Faculty(String name, int facultyID) {
         this.name = name;
         this.facultyID = facultyID;
@@ -24,6 +72,7 @@ public class Faculty implements ContainMessage {
         this.classrooms = new ArrayList<>();
         this.campusChairmenID = 0;
         this.educationalAssistantID = 1;
+        this.educationalRequests = new ArrayList<>();
     }
 
     /*
@@ -96,5 +145,13 @@ public class Faculty implements ContainMessage {
         } else {
             return educationalAssistantID;
         }
+    }
+
+    public Classroom getClassroom(int index) {
+        return classrooms.get(index);
+    }
+
+    public Object[] getProfessorsName() {
+        return professors.stream().map(Professor::getName).toArray();
     }
 }

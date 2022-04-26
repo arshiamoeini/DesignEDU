@@ -17,7 +17,7 @@
         <properties/>
         <border type="none"/>
         <children>
-          <grid id="a6926" binding="subjectsList" layout-manager="BorderLayout" hgap="0" vgap="0">
+          <grid id="a6926" binding="subjectsListMenu" layout-manager="BorderLayout" hgap="0" vgap="0">
             <constraints>
               <tabbedpane title="subjects list"/>
             </constraints>
@@ -98,6 +98,12 @@
                     </properties>
                   </component>
                 </children>
+              </grid>
+              <grid id="a07e" binding="subjectsList" layout-manager="BorderLayout" hgap="0" vgap="0">
+                <constraints border-constraint="Center"/>
+                <properties/>
+                <border type="none"/>
+                <children/>
               </grid>
             </children>
           </grid>

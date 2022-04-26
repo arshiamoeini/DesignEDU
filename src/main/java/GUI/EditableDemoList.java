@@ -21,10 +21,6 @@ public abstract class EditableDemoList extends DemoList {
     protected CellPane getCellPane(int row, int column) {
         return (CellPane) pane.getComponent(row * (columnsTitle.length + 2) + column);
     }
-    protected JButton getEditButton(int row) {
-        //it is in first column
-        return (JButton) getCellPane(row, 0).getLabel();
-    }
 
     protected abstract void addActionHandler();
     public class adderButton extends JButton {

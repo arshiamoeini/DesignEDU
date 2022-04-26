@@ -1,73 +1,9 @@
-[
-  {
-    "facultyTag": "MATH",
-    "professors": [],
-    "students": [],
-    "courses": [
-      {
-        "name": "riazi 1",
-        "id": 2004,
-        "credit": 0,
-        "prerequisite": [],
-        "coRequisite": []
-      },
-      {
-        "name": "riazi 2",
-        "id": 2005,
-        "credit": 0,
-        "prerequisite": [
-          {
-            "name": "riazi 1",
-            "id": 2004,
-            "credit": 0,
-            "prerequisite": [],
-            "coRequisite": []
-          }
-        ],
-        "coRequisite": []
-      }
-    ],
-    "classrooms": [
-      {
-        "course": {
-          "name": "riazi 2",
-          "id": 2005,
-          "credit": 0,
-          "prerequisite": [
-            {
-              "name": "riazi 1",
-              "id": 2004,
-              "credit": 0,
-              "prerequisite": [],
-              "coRequisite": []
-            }
-          ],
-          "coRequisite": []
-        },
-        "teacher": {
-          "roomNumber": 0,
-          "id": 100,
-          "hashOfPassword": 1509442,
-          "facultyTag": "MATH",
-          "nationalCode": 0,
-          "phoneNumber": 0
-        },
-        "capacity": 50,
-        "students": [],
-        "examDate": {
-          "date": {
-            "year": 2022,
-            "month": 4,
-            "day": 24
-          },
-          "time": {
-            "hour": 10,
-            "minute": 34,
-            "second": 24,
-            "nano": 315000000
-          }
-        }
-      }
-    ]
-  }
-]
+{
+  "registrationLicense": false,
+  "id": 100,
+  "hashOfPassword": 48690,
+  "facultyID": 0,
+  "nationalCode": 0,
+  "phoneNumber": 0,
+  "weeklyClassesID": []
+}

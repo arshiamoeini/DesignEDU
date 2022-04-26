@@ -1,8 +1,5 @@
 package GUI;
 
-import LOGIC.Command;
-import LOGIC.Filter;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -24,6 +21,7 @@ public class ListDesigner implements PanelDesigner {
     private JPanel filterMenu;
     private JPanel programItems;
     private JPanel Filter;
+    private JPanel subjectsListMenu;
     private JPanel subjectsList;
     private static OptionCentricText facultySelector = new OptionCentricText(OptionCentricText.OptionsFrom.Faculties);
     private static OptionCentricText programSelector = new OptionCentricText(OptionCentricText.OptionsFrom.Program);
@@ -48,9 +46,9 @@ public class ListDesigner implements PanelDesigner {
                 facultySelector.getSelectedIndex(),
                 programSelector.getSelectedIndex(),
                 sortRadio.isSelected());
-        subjectsList.add(demoList, BorderLayout.CENTER);
-        subjectsList.repaint();
-        subjectsList.revalidate();
+        subjectsListMenu.add(demoList);
+        subjectsListMenu.repaint();
+        subjectsListMenu.revalidate();
     }
 
     public static ListDesigner getInstance() {
@@ -59,6 +57,7 @@ public class ListDesigner implements PanelDesigner {
 
     @Override
     public JPanel getPanel() {
+      //  subjectsListMenu.removeAll();
         return panel;
     }
 }

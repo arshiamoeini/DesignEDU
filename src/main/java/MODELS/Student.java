@@ -25,7 +25,6 @@ public class Student extends User {
     private boolean registrationLicense;
     private LocalDateTime registrationTime;
 
-    private ArrayList<Classroom> weeklyClasses;
     public Student(long id, String password) {
         super(id, password);
     }

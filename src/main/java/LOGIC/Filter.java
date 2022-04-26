@@ -4,7 +4,7 @@ import GUI.*;
 import MODELS.*;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
+import java.util.*;
 
 public class Filter {
     private static Filter instance;
@@ -101,7 +101,39 @@ public class Filter {
         Classroom classroom = new Classroom(pre * 100 + counter,
                 subjectFilterDate.faculty.getEducationalAssistantID(),
                 0,
-                LocalDateTime.now());
+                LocalDateTime.now(), new ArrayList<>());
         subjectFilterDate.faculty.addClassrooms(classroom);
+    }
+
+
+    public ArrayList<EducationalServicesDesigner.WeeklyClassSchedule> getSchedule(List<Classroom> weeklyClasses) {
+        ArrayList<EducationalServicesDesigner.WeeklyClassSchedule> ans = new ArrayList<>();
+        for (Classroom classroom: weeklyClasses) {
+            for (LocalDateTime time: classroom.getTime()) {
+                ans.add(new EducationalServicesDesigner.WeeklyClassSchedule(
+                        classroom.getCourse().getName(),
+                        classroom.getProfessorName(),
+                        RealTime.weekDayAndTime(time)));
+            }
+        }
+        return ans;
+    }
+
+    public ArrayList<EducationalServicesDesigner.WeeklyClassSchedule> getExamSchedule(List<Classroom> weeklyClasses) {
+        ArrayList<EducationalServicesDesigner.WeeklyClassSchedule> ans = new ArrayList<>();
+        Collections.sort(weeklyClasses, new Comparator<Classroom>() {
+            @Override
+            public int compare(Classroom o1, Classroom o2) {
+                if (o1 == null || o2 == null) return 0;
+                return o1.getExamDate().compareTo(o2.getExamDate());
+            }
+        });
+        for (Classroom classroom: weeklyClasses) {
+            ans.add(new EducationalServicesDesigner.WeeklyClassSchedule(
+                        classroom.getCourse().getName(),
+                        classroom.getProfessorName(),
+                        RealTime.dateAndTime(classroom.getExamDate())));
+        }
+        return ans;
     }
 }
